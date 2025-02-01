@@ -31,3 +31,21 @@ function getGrade(score) {
   console.log(getGrade(96));
   console.log(getGrade(82));
   console.log(getGrade(56));
+
+  /* 
+The teacher is really happy with the program you have created so far. But now they want to have an 
+easy way to check if a student has a passing grade. A passing grade is anything that is not an "F".
+*/
+
+function hasPassingGrade(score) {
+    if (getGrade(score) === "F") {
+      return false;
+    } else {
+      return true
+    }
+  }
+  
+  
+  console.log(hasPassingGrade(100));
+  console.log(hasPassingGrade(53));
+  console.log(hasPassingGrade(87));
