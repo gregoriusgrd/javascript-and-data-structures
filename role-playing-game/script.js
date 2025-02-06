@@ -91,6 +91,12 @@ const locations = [
         "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
         "button functions": [restart, restart, restart],
         text: "You die. &#x2620;"
+    },
+    {
+        name: "win",
+        "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+        "button functions": [restart, restart, restart],
+        text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;"
     }
 ];
 
@@ -192,21 +198,35 @@ function goFight () {
 function attack() {
     text.innerText = "The " + monsters[fighting].name + " attacks.";
     text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
-    health -= monsters[fighting].level;
-    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+    health -= getMonsterAttackValue(monsters[fighting].level);
+
+    if (isMonsterHit()) {
+      monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;    
+    } else {
+        text.innerText += " You miss.";
+    }
+    
     healthText.innerText = health;
     monsterHealthText.innerText = monsterHealth;
 
     if (health <= 0) {
-      lose();
+        lose();
     } else if (monsterHealth <= 0) {
       if (fighting === 2) {
-        winGame();
+            winGame();
       } else {
-        defeatMonster();
+            defeatMonster();
       }
+    } else {
+        text.innerText += " You miss.";
     }
   }
+
+function getMonsterAttackValue (level) {
+    const hit = (level * 5) - (Math.floor(Math.random() * xp)); // This will set the monster's attack to five times their level minus a random number between 0 and the player's xp.
+    console.log(hit);
+    return hit > 0 ? hit: 0; // returns hit if hit is greater than 0, or returns 0 if it is not.
+}
 
 function dodge () {
     text.innerText = "You dodge the attack from the " + monsters[fighting].name;
@@ -237,3 +257,8 @@ function restart () {
 
     goTown();
 }
+
+function winGame () {
+    update(locations[6]);
+}
+
