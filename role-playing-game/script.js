@@ -107,7 +107,7 @@ function update(location) {
     button1.onclick = location["button functions"][0];
     button2.onclick = location["button functions"][1];
     button3.onclick = location["button functions"][2];
-    text.innerText = location.text;
+    text.innerHTML = location.text;
 }
   
 function goTown() {
@@ -189,20 +189,24 @@ function goFight () {
     monsterHealthText.innerText = monsters[fighting].health;
 }
 
-function attack () {
-    text.innerText = "The " + monsters[fighting].name + " attacks."
-    text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + "."; // += newline text
+function attack() {
+    text.innerText = "The " + monsters[fighting].name + " attacks.";
+    text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
     health -= monsters[fighting].level;
-    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1 ;
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
     healthText.innerText = health;
     monsterHealthText.innerText = monsterHealth;
 
     if (health <= 0) {
-        lose()
+      lose();
     } else if (monsterHealth <= 0) {
-        defeatMonster()
+      if (fighting === 2) {
+        winGame();
+      } else {
+        defeatMonster();
+      }
     }
-}
+  }
 
 function dodge () {
     text.innerText = "You dodge the attack from the " + monsters[fighting].name;
