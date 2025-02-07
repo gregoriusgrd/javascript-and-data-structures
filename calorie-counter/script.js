@@ -8,9 +8,26 @@ const output = document.getElementById("output");
 let isError = false;
 
 function cleanInputString(str) {
-  console.log("original string: ", str);
-  const regex = /[+-\s]/g;
+  const regex = /[+-\s]/g; // the g flag, stands for "global"
   return str.replace(regex, "");
 }
 
-console.log(cleanInputString("+-99"));
+function isInvalidInput(str) {
+  const regex = /\d+e\d+/i; // the i flag, which stands for "insensitive". // the + To match your digit pattern one or more times
+  return str.match(regex);
+}
+
+function addEntry() {
+  const targetInputContainer = document.querySelector(
+    `#${entryDropdown.value} .input-container`
+  );
+  const entryNumber =
+    targetInputContainer.querySelectorAll('input[type="text"]').length;
+  const HTMLString = `
+    <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
+    <input type="text" id="${entryDropdown.value}-${entryNumber}-name" placeholder="Name" />
+    <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>\
+    <input type="number" min = "0" placeholder = "Calories" id="${entryDropdown.value}-${entryNumber}-calories"/>
+    `;
+  targetInputContainer.innerHTML += HTMLString;
+}
