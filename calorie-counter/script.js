@@ -13,7 +13,7 @@ function cleanInputString(str) {
 }
 
 function isInvalidInput(str) {
-  const regex = /\d+e\d+/i; // the i flag, which stands for "insensitive". // the + To match your digit pattern one or more times
+  const regex = /\d+e\d+/i; // the i flag, which stands for "insensitive". // the + to match your digit pattern one or more times
   return str.match(regex);
 }
 
@@ -75,9 +75,9 @@ function calculateCalories(e) {
     remainingCalories
   )} Calorie ${surplusOrDeficit}</span>  
   <hr>
-  <p>${budgetCalories} Calories Budgeted</p>
-  <p>${consumedCalories} Calories Consumed</p>
-  <p>${exerciseCalories} Calories Burned</p>
+    <p>${budgetCalories} Calories Budgeted</p>
+    <p>${consumedCalories} Calories Consumed</p>
+    <p>${exerciseCalories} Calories Burned</p>
   `;
   output.classList.remove("hide");
 }
