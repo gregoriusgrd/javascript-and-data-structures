@@ -7,11 +7,10 @@ const maskEmail = (email) => {
 
   const firstChar = localPart[0];
   const lastChar = localPart[localPart.length - 1];
-  const maskedMiddle = "*".repeat(localPart.length - 1);
+  const maskedMiddle = "*".repeat(localPart.length - 2);
 
   return firstChar + maskedMiddle + lastChar + domain;
 };
 
 console.log(maskEmail("apple.pie@example.com"));
-
 console.log(maskEmail("freecodecamp@example.com"));
