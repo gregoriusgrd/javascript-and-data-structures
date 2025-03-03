@@ -1,15 +1,19 @@
 const year = 2025;
 
 function isLeapYear(year) {
-  if (year % 4 === 0) {
-    return `${year} is a leap year`;
+  let result = 0;
+
+  if (year % 400 === 0) {
+    result = `${year} is a leap year.`;
   } else if (year % 100 === 0) {
-    return `${year} is a leap year`;
-  } else if (year % 400 === 0) {
-    return `${year} is a leap year`;
+    result = `${year} is not a leap year.`;
+  } else if (year % 4 === 0) {
+    result = `${year} is a leap year.`;
   } else {
-    return `${year} is not a leap year`;
+    result = `${year} is not a leap year.`;
   }
+  return result;
 }
 
-console.log(isLeapYear(2025));
+const result = isLeapYear(year);
+console.log(result);
