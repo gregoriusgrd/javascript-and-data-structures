@@ -6,23 +6,11 @@ function addLunchToEnd(array, string) {
   return array;
 }
 
-addLunchToEnd(lunches, "Tacos");
-console.log(lunches);
-
-addLunchToEnd(["Pizza", "Tacos"], "Burger");
-console.log(lunches);
-
 function addLunchToStart(array, string) {
   array.unshift(string);
   console.log(`${string} added to the start of the lunch menu.`);
   return array;
 }
-
-addLunchToStart(lunches, "Milk");
-console.log(lunches);
-
-addLunchToStart(["Burger", "Sushi"], "Pizza");
-console.log(lunches);
 
 function removeLastLunch(array) {
   let removedLastLunch;
@@ -34,9 +22,6 @@ function removeLastLunch(array) {
   }
   return array;
 }
-
-removeLastLunch(lunches);
-console.log(lunches);
 
 function removeFirstLunch(array) {
   let removedFirstLunch;
@@ -63,3 +48,15 @@ function getRandomLunch(array) {
 }
 
 getRandomLunch(lunches);
+
+function showLunchMenu(array) {
+  let joinedArray = array.join(", ");
+  if (array.length === 0) {
+    console.log("The menu is empty.");
+  } else {
+    console.log(`Menu items: ${joinedArray}`);
+  }
+  return array;
+}
+
+console.log(showLunchMenu(["Greens", "Corns", "Beans"]));
