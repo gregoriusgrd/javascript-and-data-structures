@@ -42,3 +42,26 @@ function getAverageRating(ratings) {
   const total = ratings[0] + ratings[1] + ratings[2] + ratings[3];
   return total / ratings.length;
 }
+
+function getTotalIngredients(ingredients) {
+  return ingredients.length;
+}
+
+function getDifficultyLevel(cookingTime) {
+  if (cookingTime <= 30) {
+    return "easy";
+  } else if (cookingTime <= 60) {
+    return "medium";
+  } else {
+    return "hard";
+  }
+}
+
+const recipe1AverageRating = getAverageRating(recipe1.ratings);
+console.log(recipe1AverageRating);
+
+const recipe1TotalIngredients = getTotalIngredients(recipe1.ingredients);
+console.log(recipe1TotalIngredients);
+
+const recipe1DifficultyLevel = getDifficultyLevel(recipe1.cookingTime);
+console.log(recipe1DifficultyLevel);
