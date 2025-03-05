@@ -37,3 +37,8 @@ const recipe3 = {
 };
 
 recipes.push(recipe1, recipe2, recipe3);
+
+function getAverageRating(ratings) {
+  const total = ratings[0] + ratings[1] + ratings[2] + ratings[3];
+  return total / ratings.length;
+}
