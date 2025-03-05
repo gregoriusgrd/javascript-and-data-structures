@@ -37,11 +37,10 @@ function removeFirstLunch(array) {
 }
 
 function getRandomLunch(array) {
-  let randomLunch;
   if (array.length === 0) {
     console.log(`No lunches available.`);
   } else {
-    randomLunch = array[Math.floor(Math.random() * array.length)];
+    let randomLunch = array[Math.floor(Math.random() * array.length)];
     console.log(`Randomly selected lunch: ${randomLunch}`);
   }
   return randomLunch;
