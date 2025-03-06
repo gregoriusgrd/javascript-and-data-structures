@@ -35,3 +35,21 @@ const questions = [
     answer: "a. Russia",
   },
 ];
+
+function getRandomQuestion(question) {
+  return question[Math.floor(Math.random() * question.length)];
+}
+
+function getRandomComputerChoice(choice) {
+  return choice[Math.floor(Math.random() * choice.length)];
+}
+
+function getResults(selectedQuestion, computerChoice) {
+  if (computerChoice === selectedQuestion.answer) {
+    return "The computer's choice is correct!";
+  } else {
+    return `The computer's choice is wrong. The correct answer is: ${selectedQuestion.answer}`;
+  }
+}
+
+console.log(getResults(questions));
